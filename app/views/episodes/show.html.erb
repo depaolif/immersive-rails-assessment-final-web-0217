@@ -5,7 +5,12 @@
 <h3>Guests</h3>
 
 <ul>
-  <% @episode.guests.each do |guest| %>
-    <li><%= link_to guest.name, guest %></li>
+  <% @episode.appearances.each do |appearance| %>
+    <li><%= link_to appearance.guest.name, appearance.guest %>, <%= appearance.rating %> Stars <br>
+    Booked by: <%= appearance.producer.username %><br>
+    <%= link_to 'Edit', edit_appearance_path(appearance) %>
+    <br>
+    </li>
   <% end %>
 </ul>
+<%= link_to 'Book New Appearance', new_episode_appearance_path(@episode) %>

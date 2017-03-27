@@ -1,0 +1,8 @@
+<%= form_for @appearance do |f| %>
+  <%= f.label :rating %>
+  <%= f.number_field :rating, in: (1..5) %> <br>
+    Episode: <%= f.collection_select :episode_id, Episode.all, :id, :date %> <br>
+  Guest: <%= f.collection_select :guest_id, Guest.all, :id, :name %> <br>
+  Producer: <%= f.collection_select :user_id, User.all, :id, :username %> <br>
+  <%= f.submit %>
+<% end %>

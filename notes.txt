@@ -1,0 +1,22 @@
+Goals Completed:
+
+1. Initially, Stephen rated the interview with Michael J. Fox a 3, but in retrospect, it actually wasn't that bad! As a user, I should be able to edit an appearance so that I can change a rating. Build out the edit functionality for an appearance, keeping with RESTful conventions.
+-> added edit form route, controller actions (:edit,:update), and view page
+
+2. We want to add some more validations to our models - an appearance should only be valid if it has a rating on it that's between 1 and 5.
+-> added inclusion within 1..5 validation to appearance model
+
+3. When we create a new appearance, we should also keep track of the producer who booked that appearance. This means that an appearance should also belong to a user. Update your schema, models, and forms to reflect this.
+-> added a new migration to add a user reference to the appearances table
+-> changed the user model and appearance model to account for this new relationship
+-> added the option to select a user as a producer in the new_appearance_path (assuming that a producer/"user" can create an appearance for a guest on behalf of another producer, and so should be able to select which user is that guest's producer)
+
+
+Thanks for looking at my code challenge. Besides the required goals completed above, I also added a few other modifications to improve the app:
+1. Added alert messages if an update or create post function did not save correctly.
+2. Added a form partial for new appearances view pages.
+3. Added a "producer" alias to the user class for appearances. You can now call @appearance.producer, and get the "producer" who booked that appearance.
+4. Added information on appearances by guests on Episode show pages, and a link to edit any guest's appearance (can only edit rating).
+5. Added all of a guest's appearances on the guest's show page, along with links to edit those appearances' ratings and to go to that episode's show page
+6. Cleaned up the new appearances form so that it has labels and line breaks for different fields
+7. Added nested resource for the appearances new route, so that an episode show page can have a link to a new appearance, and the episode is autofilled with the episode the link was clicked from

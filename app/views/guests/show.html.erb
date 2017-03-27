@@ -2,3 +2,12 @@
 
 <h3><%= @guest.occupation %></h3>
 
+<h3>Appearances</h3>
+<ul>
+  <% @guest.appearances.each do |appearance| %>
+    <li>
+      <%= link_to appearance.episode.date, appearance.episode %>: <%= appearance.rating %> Stars
+      <br><%= link_to 'Edit', edit_appearance_path(appearance) %>
+    </li>
+  <% end %>
+</ul>
